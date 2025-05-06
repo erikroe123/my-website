@@ -11,15 +11,17 @@
             touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
+        
         body {
             overflow: hidden;
             background: linear-gradient(to bottom, #56CCF2, #2F80ED);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100dvh;
+            height: 100vh;
             font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
         }
+        
         #gameContainer {
             position: relative;
             width: 100%;
@@ -30,13 +32,14 @@
             border-radius: 10px;
             overflow: hidden;
         }
+        
         #gameCanvas {
             width: 100%;
             height: 100%;
             display: block;
             background: linear-gradient(to bottom, #4EC0CA, #2BB9E6);
-            outline: none;
         }
+        
         #starwars {
             position: absolute;
             top: 0;
@@ -52,6 +55,7 @@
             display: none;
             z-index: 100;
         }
+        
         #crawl {
             position: relative;
             top: 100%;
@@ -62,6 +66,7 @@
             line-height: 1.5;
             z-index: 180;
         }
+        
         @keyframes crawl {
             0% {
                 top: 100%;
@@ -72,11 +77,13 @@
                 transform: rotateX(25deg) translateZ(-500px);
             }
         }
+        
         #starwars-title {
             font-size: 48px;
             margin-bottom: 30px;
             text-transform: uppercase;
         }
+        
         #startText {
             position: absolute;
             top: 60%;
@@ -89,13 +96,16 @@
             display: none;
             animation: blink 1s infinite;
         }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+        
         .fly-in {
             animation: flyIn 1.5s ease-out forwards;
         }
+        
         @keyframes flyIn {
             0% {
                 transform: translateX(-300px) rotate(-30deg);
@@ -106,6 +116,7 @@
                 opacity: 1;
             }
         }
+        
         #score {
             position: absolute;
             top: 5%;
@@ -117,6 +128,7 @@
             z-index: 10;
             font-weight: bold;
         }
+        
         #gameOver {
             position: absolute;
             top: 0;
@@ -132,15 +144,18 @@
             z-index: 20;
             text-align: center;
         }
+        
         #gameOver h1 {
             font-size: clamp(28px, 7vw, 36px);
             margin-bottom: 15px;
             color: #FFD700;
         }
+        
         #finalScore {
             font-size: clamp(20px, 5vw, 24px);
             margin-bottom: 25px;
         }
+        
         #restartBtn {
             margin-top: 20px;
             padding: 12px 30px;
@@ -153,10 +168,12 @@
             color: #333;
             transition: transform 0.2s, background 0.2s;
         }
+        
         #restartBtn:active {
             transform: scale(0.95);
             background: #FFC000;
         }
+        
         #controls {
             position: absolute;
             bottom: 8%;
@@ -165,6 +182,7 @@
             justify-content: center;
             z-index: 15;
         }
+        
         #jumpBtn {
             padding: 20px 40px;
             background: rgba(255,215,0,0.7);
@@ -178,10 +196,12 @@
             transition: transform 0.1s, background 0.2s;
             display: none;
         }
+        
         #jumpBtn:active {
             transform: scale(0.95);
             background: rgba(255,195,0,0.8);
         }
+        
         #startScreen {
             position: absolute;
             top: 0;
@@ -197,11 +217,13 @@
             z-index: 30;
             text-align: center;
         }
+        
         #startScreen h1 {
             font-size: clamp(28px, 7vw, 36px);
             margin-bottom: 20px;
             color: #FFD700;
         }
+        
         #startBtn {
             margin-top: 30px;
             padding: 15px 40px;
@@ -214,15 +236,18 @@
             color: #333;
             transition: transform 0.2s, background 0.2s;
         }
+        
         #startBtn:active {
             transform: scale(0.95);
             background: #FFC000;
         }
+        
         .instructions {
             font-size: clamp(14px, 3.5vw, 16px);
             margin: 10px 20px;
             line-height: 1.5;
         }
+        
         #countdown {
             position: absolute;
             top: 50%;
@@ -234,12 +259,14 @@
             z-index: 50;
             display: none;
         }
+        
         @media (max-width: 768px) {
             #gameContainer {
                 max-width: 100%;
                 height: 100%;
                 border-radius: 0;
             }
+            
             #jumpBtn {
                 display: block;
             }
@@ -268,7 +295,9 @@
             left: unset;
             right: unset;
         }
+
         @keyframes floatMinion {
+            /* Dalam @keyframes floatMinion */
             0% { transform: translateX(0) translateY(0) rotate(0deg); }
             50% { transform: translateX(10px) translateY(-20px) rotate(5deg); }
             100% { transform: translateX(0) translateY(0) rotate(0deg); }
@@ -288,6 +317,7 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         .fade-in {
             animation: fadeIn 2s ease-in forwards;
         }
@@ -299,17 +329,17 @@
         <div id="countdown">3</div>
         <div id="startText">MULAI!</div>
         <div id="blocker"></div>
-
+        <!-- Tambahkan sebelum </body> -->
         <div id="minion-templates" style="display:none;">
             <img src="bob1.png" class="minion-img">
             <img src="bob2.png" class="minion-img">
             <img src="bob3.png" class="minion-img">
         </div>
-
+        <!-- Background images for parallax -->
         <img id="bgFar" src="gunung.jpg" style="display:none;">
         <img id="bgNear" src="awan.png" style="display:none;">
-        <canvas id="gameCanvas" tabindex="0"></canvas>
-
+        <canvas id="gameCanvas"></canvas>
+        
         <div id="starwars">
             <div id="crawl">
                 <div id="starwars-title">Selamat Ulang Tahun Ke 24th</div>
@@ -336,48 +366,51 @@
                 <p></p>
             </div>
         </div>
-
+        
         <div id="startScreen">
             <h1>Flappy ZITA</h1>
             <p class="instructions" id="desktopInstructions">Klik Mulai buat terbangin Zita</p>
             <p class="instructions" id="mobileInstructions">Tap layar buat terbangin Zita</p>
             <button id="startBtn">MULAI</button>
         </div>
-
+        
         <div id="gameOver">
             <h1>Yeuh Cupu kau</h1>
             <p id="finalScore">Score mu: 0</p>
             <button id="restartBtn">MAIN LAGI GA?</button>
         </div>
-
+        
         <div id="controls">
             <button id="jumpBtn">TERBANG</button>
         </div>
     </div>
 
-    <!-- Audio -->
+    <!-- Tambahkan elemen audio untuk suara -->
     <audio id="flapSound" src="iye.mp3" preload="auto"></audio>
     <audio id="hitSound" src="Takkkkkk.mp3" preload="auto"></audio>
     <audio id="scoreSound" src="koin.mp3" preload="auto"></audio>
     <audio id="resetAudio" src="Tak nangis.mp3" preload="auto"></audio>
     <audio id="starwarsSound" src="stecu.mp3" preload="auto"></audio>
     <audio id="mulaiAudio" src="Mulai.mp3" preload="auto"></audio>
-
-    <!-- Burung -->
+    <!-- Elemen gambar untuk burung custom (tersembunyi) -->
     <img id="birdImage" src="zite.png" style="display:none">
 
     <script>
+        // Deteksi device type
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
+        
+        // Element references
         const desktopInstructions = document.getElementById('desktopInstructions');
         const mobileInstructions = document.getElementById('mobileInstructions');
-
+        
+        // Sesuaikan instruksi berdasarkan device
         if (isMobile) {
             desktopInstructions.style.display = 'none';
         } else {
             mobileInstructions.style.display = 'none';
         }
-
+        
+        // Game variables
         let canvas, ctx;
         let score = 0;
         let gameSpeed = 2;
@@ -390,7 +423,10 @@
         let gameCanStart = false;
         let bgFarX = 0;
         let bgNearX = 0;
-
+        const bgFarSpeed = 0.5;   // Kecepatan gerak background jauh
+        const bgNearSpeed = 1.5;   // Kecepatan gerak foreground
+        
+        // Bird
         const bird = {
             x: 0,
             y: 0,
@@ -399,90 +435,116 @@
             velocity: 0,
             jump: -10
         };
-
+        
+        // Pipes
         const pipes = [];
         let pipeWidth = 0;
         let pipeGap = 0;
-        let pipeFrequency = 1500;
-
+        let pipeFrequency = 1500; // milliseconds
+        
+        // Initialize game
         function initGame() {
             const gameContainer = document.getElementById('gameContainer');
             canvas = document.getElementById('gameCanvas');
             ctx = canvas.getContext('2d');
-
+            
+            // Set canvas size based on container
             const containerWidth = gameContainer.clientWidth;
             const containerHeight = gameContainer.clientHeight;
-
+            
             canvas.width = containerWidth;
             canvas.height = containerHeight;
-
+            
+            // Adjust game elements based on screen size
             bird.width = canvas.width * 0.12;
             bird.height = bird.width * 0.9;
             bird.x = canvas.width * 0.2;
             bird.y = canvas.height / 2 - bird.height / 2;
             bird.velocity = 0;
-
+            
             pipeWidth = canvas.width * 0.15;
-            pipeGap = Math.min(canvas.height * 0.35, 200); // dibatasi agar tidak terlalu besar
+            pipeGap = canvas.height * 0.30; // 35% dari tinggi layar (lebih lebar)
             gameSpeed = canvas.width * 0.005;
-
+            
+            // Reset game state
             score = 0;
             document.getElementById('score').textContent = score;
             pipes.length = 0;
             isGameOver = false;
             document.getElementById('gameOver').style.display = 'none';
             document.getElementById('starwars').style.display = 'none';
-
+            
+            // Draw initial frame
             drawBackground();
             drawBird();
         }
-
+        
+        // Start the game
         function startGame() {
+            // Hide "MULAI" text if still visible
             document.getElementById('startText').style.display = 'none';
+            
             gameCanStart = false;
             isGameStarted = true;
             document.getElementById('startScreen').style.display = 'none';
-            const bgMusic = document.getElementById('mulaiAudio');
-            bgMusic.currentTime = 0;
-            bgMusic.volume = 0.5;
-            bgMusic.play().catch(() => {});
 
-            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            const bgMusic = document.getElementById('mulaiAudio');
+            bgMusic.currentTime = 0; // Reset lagu ke awal
+            bgMusic.volume = 0.5;     // Sesuaikan volume jika perlu
+            bgMusic.play().catch(e => console.log("Auto-play mungkin diblokir:", e));
+            
+            // Start game loop
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
             lastPipeTime = performance.now();
             gameLoop();
         }
-
+        
+        // Handle window resize
         window.addEventListener('resize', () => {
             if (!isGameStarted) return;
             initGame();
         });
-
+        
+        // Game loop
         function gameLoop(timestamp) {
-            if (isGameOver || isResetting) return;
+            if (isGameOver || isResetting) {
+                return;
+            }
+            
             update(timestamp);
             draw();
             animationFrameId = requestAnimationFrame(gameLoop);
         }
-
+        
         function update(timestamp) {
+            // Update bird
             bird.velocity += gravity;
             bird.y += bird.velocity;
-
-            if (bird.y + bird.height > canvas.height || bird.y < 0) gameOver();
-
+            
+            // Check collision with ground or sky
+            if (bird.y + bird.height > canvas.height || bird.y < 0) {
+                gameOver();
+            }
+            
+            // Generate pipes
             if (timestamp - lastPipeTime > pipeFrequency) {
                 createPipe();
                 lastPipeTime = timestamp;
-
+                
+                // Increase difficulty slightly
                 if (score > 0 && score % 3 === 0) {
                     gameSpeed += 0.2;
                     pipeFrequency = Math.max(1000, pipeFrequency - 50);
                 }
             }
-
+            
+            // Update pipes
             for (let i = pipes.length - 1; i >= 0; i--) {
                 pipes[i].x -= gameSpeed;
-
+                
+                // Check collision with bird
                 if (
                     bird.x < pipes[i].x + pipeWidth &&
                     bird.x + bird.width > pipes[i].x &&
@@ -490,94 +552,167 @@
                 ) {
                     gameOver();
                 }
-
+                
+                // Increase score when passing a pipe
                 if (pipes[i].x + pipeWidth < bird.x && !pipes[i].passed) {
                     pipes[i].passed = true;
                     score++;
                     document.getElementById('score').textContent = score;
+
                     const scoreAudio = document.getElementById('scoreSound');
                     scoreAudio.currentTime = 0;
                     scoreAudio.volume = 0.3;
-                    scoreAudio.play().catch(() => {});
+                    scoreAudio.play().catch(e => console.log("Audio error:", e));
                 }
-
-                if (pipes[i].x + pipeWidth < 0) pipes.splice(i, 1);
+                
+                // Remove pipes that are off screen
+                if (pipes[i].x + pipeWidth < 0) {
+                    pipes.splice(i, 1);
+                }
             }
-
+            
+            // Check win condition
             checkWinCondition();
         }
-
+        
         function checkWinCondition() {
             if (score >= 6 && document.getElementById('starwars').style.display !== 'block') {
+                // Hentikan game
                 isGameOver = true;
                 const bgMusic = document.getElementById('mulaiAudio');
                 bgMusic.pause();
+
                 cancelAnimationFrame(animationFrameId);
+                
                 document.getElementById('blocker').style.display = 'block';
+
+                // Tampilkan efek Star Wars
                 const starwars = document.getElementById('starwars');
                 starwars.style.display = 'block';
                 createFloatingMinions();
+                
+                // Play starwars sound
                 const starwarsAudio = document.getElementById('starwarsSound');
                 starwarsAudio.currentTime = 0;
                 starwarsAudio.volume = 0.5;
                 starwarsAudio.play();
-
+                
+                
+                // Reset animasi setelah selesai
                 setTimeout(() => {
                     starwars.style.display = 'none';
                     document.getElementById('blocker').style.display = 'none';
+                    
+                    // Kembali ke layar awal (startScreen)
+                    document.getElementById('startScreen').style.display = 'flex';
+                    startScreen.classList.add('fade-in');
                     document.getElementById('gameOver').style.display = 'none';
+                    
+                    // Reset semua variabel game
                     isGameStarted = false;
                     isGameOver = false;
                     score = 0;
                     pipes.length = 0;
                     gameSpeed = 2;
                     pipeFrequency = 1500;
+                    
+                    // Update tampilan score
                     document.getElementById('score').textContent = score;
-                    clearMinions();
+                    clearMinions(); 
+                    // Reset posisi burung
                     starwars.style.display = 'none';
                     initGame();
-                }, 39000);
+                }, 39000); // Durasi 15 detik
             }
         }
-
         function createFloatingMinions() {
             const minionTemplates = document.querySelectorAll('#minion-templates .minion-img');
             const gameContainer = document.getElementById('gameContainer');
             const containerWidth = gameContainer.clientWidth;
+            
+            // Area aman: Minion hanya muncul di 20% kiri/kanan layar
             const safeMargin = containerWidth * 0.2;
 
+            // Buat 10 Minion random
             for (let i = 0; i < 24; i++) {
                 setTimeout(() => {
                     const randomMinion = minionTemplates[Math.floor(Math.random() * minionTemplates.length)];
                     const minion = randomMinion.cloneNode(true);
+                    
                     minion.classList.add('minion');
+                    
+                    // Posisi X: Hanya di area 20% kiri atau kanan
                     const isLeft = Math.random() > 0.5;
                     const xPos = isLeft 
-                        ? Math.random() * safeMargin 
-                        : containerWidth - safeMargin + (Math.random() * safeMargin);
+                        ? Math.random() * safeMargin // Area kiri (0-20%)
+                        : containerWidth - safeMargin + (Math.random() * safeMargin); // Area kanan (80-100%)
+                    
+                    // Posisi Y: 30-90% dari tinggi layar (hindari atas/bawah)
                     const yPos = 30 + (Math.random() * 60);
+                    
                     minion.style.left = `${xPos}px`;
                     minion.style.top = `${yPos}%`;
                     minion.style.animationDuration = `${8 + Math.random() * 7}s`;
                     minion.style.opacity = '0';
+                    
                     gameContainer.appendChild(minion);
+                    
+                    // Efek fade in
                     setTimeout(() => {
                         minion.style.opacity = '0.7';
                         minion.style.transition = 'opacity 1s';
                     }, 100);
-                }, i * 500);
+                }, i * 500); // Muncul bertahap
             }
         }
+        // function createFloatingMinions() {
+        //     const minionTemplates = document.querySelectorAll('#minion-templates .minion-img');
+        //     const gameContainer = document.getElementById('gameContainer');
+            
+        //     // Buat 10 Minion random
+        //     for (let i = 0; i < 10; i++) {
+        //         setTimeout(() => {
+        //             const randomMinion = minionTemplates[Math.floor(Math.random() * minionTemplates.length)];
+        //             const minion = randomMinion.cloneNode(true);
+                    
+        //             minion.classList.add('minion');
+        //             minion.style.left = `${Math.random() * 100}%`;
+        //             minion.style.top = `${30 + (Math.random() * 60)}%`;
+        //             minion.style.animationDuration = `${8 + Math.random() * 7}s`;
+        //             minion.style.opacity = 0;
+                    
+        //             gameContainer.appendChild(minion);
+                    
+        //             // Efek fade in
+        //             setTimeout(() => {
+        //                 minion.style.opacity = 0.7;
+        //                 minion.style.transition = 'opacity 1s';
+        //             }, 100);
+        //         }, i * 500); // Muncul bertahap
+        //     }
+        // }
 
         function clearMinions() {
-            document.querySelectorAll('.minion').forEach(minion => minion.remove());
+            document.querySelectorAll('.minion').forEach(minion => {
+                minion.remove();
+            });
         }
-
+        
         function draw() {
+            // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw background
+            //drawBackground();
             drawParallax();
+            
+            // Draw pipes
             drawPipes();
+            
+            // Draw bird
             drawBird();
+            
+            // Draw ground
             ctx.strokeStyle = '#000';
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -585,24 +720,31 @@
             ctx.lineTo(canvas.width, canvas.height);
             ctx.stroke();
         }
-
+        
         function drawBackground() {
             const bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
             bgGradient.addColorStop(0, '#4EC0CA');
             bgGradient.addColorStop(1, '#2BB9E6');
+            
             ctx.fillStyle = bgGradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
-
+        
         function drawBird() {
             const birdImg = document.getElementById('birdImage');
+            
             if (birdImg.complete) {
                 ctx.save();
                 ctx.translate(bird.x + bird.width/2, bird.y + bird.height/2);
+                
+                // Apply rotation based on velocity
                 ctx.rotate(Math.min(Math.max(bird.velocity * 0.05, -0.3), 0.3));
+                
+                // Apply shake effect during countdown
                 if (document.getElementById('countdown').style.display === 'block') {
                     ctx.translate(Math.sin(Date.now()/100) * 5, 0);
                 }
+                
                 ctx.drawImage(birdImg, -bird.width/2, -bird.height/2, bird.width, bird.height);
                 ctx.restore();
             } else {
@@ -613,94 +755,204 @@
                 ctx.fill();
             }
         }
-
+        
+        // function drawPipes() {
+        //     ctx.fillStyle = '#2ECC71';
+        //     for (const pipe of pipes) {
+        //         ctx.fillRect(pipe.x, 0, pipeWidth, pipe.topHeight);
+        //         ctx.fillRect(pipe.x, pipe.topHeight + pipeGap, pipeWidth, canvas.height - pipe.topHeight - pipeGap);
+                
+        //         ctx.fillStyle = '#27AE60';
+        //         ctx.fillRect(pipe.x - 2, 0, pipeWidth + 4, 20);
+        //         ctx.fillRect(pipe.x - 2, pipe.topHeight + pipeGap - 20, pipeWidth + 4, 20);
+        //         ctx.fillStyle = '#2ECC71';
+        //     }
+        // }
         function drawPipes() {
             ctx.fillStyle = '#2ECC71';
             for (const pipe of pipes) {
                 // Pipa Atas
                 ctx.fillRect(pipe.x, 0, pipeWidth, pipe.topHeight);
+
+                // Shadow pipa atas
                 ctx.fillStyle = '#27AE60';
-                ctx.fillRect(pipe.x - 2, pipe.topHeight - 10, pipeWidth + 4, 10);
+                ctx.fillRect(pipe.x - 2, pipe.topHeight - 10, pipeWidth + 4, 10); // efek shadow
                 ctx.fillStyle = '#2ECC71';
 
                 // Pipa Bawah
-                const bottomY = pipe.topHeight + pipeGap;
-                const bottomHeight = canvas.height - bottomY;
-                if (bottomHeight > 0) {
-                    ctx.fillRect(pipe.x, bottomY, pipeWidth, bottomHeight);
-                    ctx.fillStyle = '#27AE60';
-                    ctx.fillRect(pipe.x - 2, bottomY, pipeWidth + 4, 10);
-                    ctx.fillStyle = '#2ECC71';
-                }
+                ctx.fillRect(pipe.x, pipe.topHeight + pipeGap, pipeWidth, canvas.height - pipe.topHeight - pipeGap);
+
+                // Shadow pipa bawah
+                ctx.fillStyle = '#27AE60';
+                ctx.fillRect(pipe.x - 2, pipe.topHeight + pipeGap, pipeWidth + 4, 10); // efek shadow
+                ctx.fillStyle = '#2ECC71';
             }
         }
+        function drawParallax() {
+            const bgFarImg = document.getElementById('bgFar');
+            const bgNearImg = document.getElementById('bgNear');
 
+            if (!bgFarImg.complete || !bgNearImg.complete) return;
+
+            // Ukuran gambar latar depan (awan) di canvas
+            const scaledWidth = bgNearImg.width * 0.5;  // 50% dari ukuran asli
+            const scaledHeight = bgNearImg.height * 0.5;
+
+            const repeatCount = Math.ceil(canvas.width / scaledWidth) + 1;
+
+            for (let i = 0; i < repeatCount; i++) {
+                // Latar belakang jauh (parallax)
+                ctx.drawImage(bgFarImg,
+                    bgFarX + i * bgFarImg.width, 0,
+                    bgFarImg.width, canvas.height);
+
+                // Latar depan (awan - diperkecil)
+                ctx.drawImage(bgNearImg,
+                    bgNearX + i * scaledWidth, 0,
+                    scaledWidth, scaledHeight);
+            }
+
+            // Update posisi
+            bgFarX -= bgFarSpeed;
+            bgNearX -= bgNearSpeed;
+
+            // Loop jika keluar layar
+            if (bgFarX <= -bgFarImg.width) bgFarX = 0;
+            if (bgNearX <= -scaledWidth) bgNearX = 0;
+        }
+        // function drawPipes() {
+        //     ctx.fillStyle = '#2ECC71';
+        //     for (const pipe of pipes) {
+        //         // Pipa Atas (atas ke bawah)
+        //         ctx.beginPath();
+        //         ctx.moveTo(pipe.x, pipe.topHeight); // titik awal (ujung atas)
+        //         ctx.lineTo(pipe.x + pipeWidth / 2, pipe.topHeight + 20); // tengah bawah
+        //         ctx.lineTo(pipe.x + pipeWidth, pipe.topHeight); // kanan atas
+        //         ctx.lineTo(pipe.x + pipeWidth, 0); // ke atas
+        //         ctx.lineTo(pipe.x, 0); // ke kiri
+        //         ctx.closePath(); // tutup bentuk
+        //         ctx.fill();
+
+        //         // Kepala pipa atas (shadow)
+        //         ctx.fillStyle = '#27AE60';
+        //         ctx.fillRect(pipe.x - 2, pipe.topHeight - 20, pipeWidth + 4, 20);
+        //         ctx.fillStyle = '#2ECC71';
+
+        //         // Pipa Bawah (bawah ke atas)
+        //         ctx.beginPath();
+        //         ctx.moveTo(pipe.x, pipe.topHeight + pipeGap); // titik awal (ujung bawah)
+        //         ctx.lineTo(pipe.x + pipeWidth / 2, pipe.topHeight + pipeGap - 20); // tengah atas
+        //         ctx.lineTo(pipe.x + pipeWidth, pipe.topHeight + pipeGap); // kanan bawah
+        //         ctx.lineTo(pipe.x + pipeWidth, canvas.height); // ke bawah
+        //         ctx.lineTo(pipe.x, canvas.height); // ke kiri
+        //         ctx.closePath(); // tutup bentuk
+        //         ctx.fill();
+
+        //         // Kepala pipa bawah (shadow)
+        //         ctx.fillStyle = '#27AE60';
+        //         ctx.fillRect(pipe.x - 2, pipe.topHeight + pipeGap, pipeWidth + 4, 20);
+        //         ctx.fillStyle = '#2ECC71';
+        //     }
+        // }
+        
         function createPipe() {
             const minHeight = canvas.height * 0.15;
             const maxHeight = canvas.height - pipeGap - minHeight;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight)) + minHeight;
-            pipes.push({ x: canvas.width, topHeight: topHeight, passed: false });
+            
+            pipes.push({
+                x: canvas.width,
+                topHeight: topHeight,
+                passed: false
+            });
         }
-
+        
         function gameOver() {
             isGameOver = true;
             document.getElementById('finalScore').textContent = `Score: ${score}`;
             document.getElementById('gameOver').style.display = 'flex';
+            
             const bgMusic = document.getElementById('mulaiAudio');
             bgMusic.pause();
             const hitAudio = document.getElementById('hitSound');
             hitAudio.currentTime = 0;
             hitAudio.play();
+            
             cancelAnimationFrame(animationFrameId);
         }
-
+        
         function resetGame() {
             isResetting = true;
             document.getElementById('gameOver').style.display = 'none';
             document.getElementById('starwars').style.display = 'none';
+            // Reset parallax position
             bgFarX = 0;
             bgNearX = 0;
+            
+            // Play reset sound
             const resetAudio = document.getElementById('resetAudio');
             resetAudio.currentTime = 0;
             resetAudio.play();
+            
+            // Show countdown
             const countdown = document.getElementById('countdown');
             countdown.style.display = 'block';
+            
             let counter = 3;
             countdown.textContent = counter;
+            
             const countdownInterval = setInterval(() => {
                 counter--;
                 countdown.textContent = counter;
+                
                 if (counter <= 0) {
                     clearInterval(countdownInterval);
                     countdown.style.display = 'none';
+                    
+                    // Tampilkan tulisan MULAI
                     const startText = document.getElementById('startText');
                     startText.style.display = 'block';
                     gameCanStart = true;
+                    
+                    // Reset game state
                     initGame();
+                    
+                    // Add fly-in animation class
+                    const birdImg = document.getElementById('birdImage');
+                    birdImg.classList.add('fly-in');
+                    
+                    // Start game after animation
                     setTimeout(() => {
-                        startText.style.display = 'none';
+                        birdImg.classList.remove('fly-in');
                         isResetting = false;
                         startGame();
                     }, 1500);
                 }
             }, 1000);
         }
-
+        
+        // Controls
         function jump() {
             const startText = document.getElementById('startText');
+            
+            // Handle tap to hide "MULAI" text and start game
             if (startText.style.display === 'block' && gameCanStart) {
                 startText.style.display = 'none';
                 isResetting = false;
                 startGame();
                 return;
             }
+            
             if (!isGameStarted || isGameOver || isResetting) return;
+            
             bird.velocity = bird.jump;
+            
             const flapAudio = document.getElementById('flapSound');
             flapAudio.currentTime = 0;
             flapAudio.play();
         }
-
+        
+        // Event listeners
         function setupControls() {
             document.addEventListener('keydown', (e) => {
                 if (e.code === 'Space') {
@@ -708,31 +960,43 @@
                     jump();
                 }
             });
-
+            
             document.getElementById('jumpBtn').addEventListener('click', jump);
             document.getElementById('startBtn').addEventListener('click', startGame);
             document.getElementById('restartBtn').addEventListener('click', resetGame);
-
-            window.addEventListener('touchstart', (e) => {
-                if (e.target.id !== 'jumpBtn' && e.target.id !== 'restartBtn' && e.target.id !== 'startBtn') {
+            
+            if (isMobile) {
+                canvas.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     jump();
-                }
-            }, { passive: false });
+                });
+            }
         }
+        
+        document.addEventListener('touchmove', (e) => {
+            if (e.target.id === 'jumpBtn' || e.target.id === 'restartBtn' || e.target.id === 'startBtn') return;
+            e.preventDefault();
+        }, { passive: false });
+        
+        // Initialize the game
+        setupControls();
+        initGame();
 
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
         });
-
         document.addEventListener("keydown", function (e) {
-            if (e.key === "F12") e.preventDefault();
-            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) e.preventDefault();
-            if (e.ctrlKey && e.key.toLowerCase() === 'u') e.preventDefault();
+            // F12
+            if (e.key === "F12") {
+            e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
+            e.preventDefault();
+            }
+            if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+            e.preventDefault();
+            }
         });
-
-        setupControls();
-        initGame();
     </script>
 </body>
 </html>
