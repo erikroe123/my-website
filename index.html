@@ -985,18 +985,6 @@
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
         });
-        document.addEventListener("keydown", function (e) {
-            // F12
-            if (e.key === "F12") {
-            e.preventDefault();
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) {
-            e.preventDefault();
-            }
-            if (e.ctrlKey && e.key.toLowerCase() === 'u') {
-            e.preventDefault();
-            }
-        });
     </script>
 </body>
 </html>
