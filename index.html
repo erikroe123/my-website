@@ -8,7 +8,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            touch-action: manipulation;
             -webkit-tap-highlight-color: transparent;
         }
         body {
@@ -374,6 +373,7 @@
 
         if (isMobile) {
             desktopInstructions.style.display = 'none';
+            mobileInstructions.style.display = 'block';
         } else {
             mobileInstructions.style.display = 'none';
         }
@@ -423,7 +423,7 @@
             bird.velocity = 0;
 
             pipeWidth = canvas.width * 0.15;
-            pipeGap = Math.min(canvas.height * 0.35, 200); // dibatasi agar tidak terlalu besar
+            pipeGap = canvas.height * 0.30;
             gameSpeed = canvas.width * 0.005;
 
             score = 0;
@@ -525,6 +525,7 @@
                 setTimeout(() => {
                     starwars.style.display = 'none';
                     document.getElementById('blocker').style.display = 'none';
+                    document.getElementById('startScreen').style.display = 'flex';
                     document.getElementById('gameOver').style.display = 'none';
                     isGameStarted = false;
                     isGameOver = false;
@@ -617,22 +618,35 @@
         function drawPipes() {
             ctx.fillStyle = '#2ECC71';
             for (const pipe of pipes) {
-                // Pipa Atas
                 ctx.fillRect(pipe.x, 0, pipeWidth, pipe.topHeight);
                 ctx.fillStyle = '#27AE60';
                 ctx.fillRect(pipe.x - 2, pipe.topHeight - 10, pipeWidth + 4, 10);
                 ctx.fillStyle = '#2ECC71';
-
-                // Pipa Bawah
-                const bottomY = pipe.topHeight + pipeGap;
-                const bottomHeight = canvas.height - bottomY;
-                if (bottomHeight > 0) {
-                    ctx.fillRect(pipe.x, bottomY, pipeWidth, bottomHeight);
-                    ctx.fillStyle = '#27AE60';
-                    ctx.fillRect(pipe.x - 2, bottomY, pipeWidth + 4, 10);
-                    ctx.fillStyle = '#2ECC71';
-                }
+                ctx.fillRect(pipe.x, pipe.topHeight + pipeGap, pipe.width, canvas.height - pipe.topHeight - pipeGap);
+                ctx.fillStyle = '#27AE60';
+                ctx.fillRect(pipe.x - 2, pipe.topHeight + pipeGap, pipe.width + 4, 10);
+                ctx.fillStyle = '#2ECC71';
             }
+        }
+
+        function drawParallax() {
+            const bgFarImg = document.getElementById('bgFar');
+            const bgNearImg = document.getElementById('bgNear');
+            if (!bgFarImg.complete || !bgNearImg.complete) return;
+            const scaledWidth = bgNearImg.width * 0.5;
+            const scaledHeight = bgNearImg.height * 0.5;
+            const repeatCount = Math.ceil(canvas.width / scaledWidth) + 1;
+
+            for (let i = 0; i < repeatCount; i++) {
+                ctx.drawImage(bgFarImg, bgFarX + i * bgFarImg.width, 0, bgFarImg.width, canvas.height);
+                ctx.drawImage(bgNearImg, bgNearX + i * scaledWidth, 0, scaledWidth, scaledHeight);
+            }
+
+            bgFarX -= 0.5;
+            bgNearX -= 1.5;
+
+            if (bgFarX <= -bgFarImg.width) bgFarX = 0;
+            if (bgNearX <= -scaledWidth) bgNearX = 0;
         }
 
         function createPipe() {
