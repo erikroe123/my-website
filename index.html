@@ -487,8 +487,7 @@
 
         function startGame() {
             if (isGameStarted) return;
-								 
-								 
+
             const cover = document.getElementById('coverImage');
             cover.style.display = 'flex';
 
@@ -503,9 +502,16 @@
                 gameCanStart = false;
                 isGameStarted = true;
                 document.getElementById('startScreen').style.display = 'none';
+                
+                // Bersihkan frame lama jika ada
                 if (animationFrameId) cancelAnimationFrame(animationFrameId);
+
                 lastPipeTime = performance.now();
-                gameLoop();
+                pipes.length = 0; // Reset pipes
+                bird.y = canvas.height / 2 - bird.height / 2; // Reset posisi burung
+                bird.velocity = 0;
+
+                gameLoop(); // Ini harus jalan!
             }, 3000);
         }
 
@@ -727,18 +733,22 @@
         }
 
         function resetGame() {
+            isGameOver = false;
             isResetting = true;
+            isGameStarted = false;
+
             document.getElementById('gameOver').style.display = 'none';
             document.getElementById('starwars').style.display = 'none';
-            bgFarX = 0;
-            bgNearX = 0;
+
             const resetAudio = document.getElementById('resetAudio');
             resetAudio.currentTime = 0;
             resetAudio.play();
+
             const countdown = document.getElementById('countdown');
             countdown.style.display = 'block';
             let counter = 3;
             countdown.textContent = counter;
+
             const countdownInterval = setInterval(() => {
                 counter--;
                 countdown.textContent = counter;
@@ -752,7 +762,7 @@
                     setTimeout(() => {
                         startText.style.display = 'none';
                         isResetting = false;
-                        startGame();
+                        startGame(); // Mulai ulang
                     }, 1500);
                 }
             }, 1000);
